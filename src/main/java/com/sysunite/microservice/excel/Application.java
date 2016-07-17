@@ -28,12 +28,12 @@ public class Application {
     CORS.enable();
 
     // Wire routes
-    get("/",                     ApplicationController.index);
-    get("/application/version",  ApplicationController.version);
-    get("/template/add",         TemplateController.add);
-    get("/template/get",         TemplateController.get);
-    get("/excel/inject",         ExcelController.inject);
-    get("*",                     ApplicationController.notfound);
+    get("/",                      ApplicationController.index);
+    get("/application/version",   ApplicationController.version);
+    post("/template/add",         TemplateController.add);
+    get("/template/get",          TemplateController.get);
+    post("/excel/inject",         ExcelController.inject);
+    get("*",                      ApplicationController.notfound);
 
     // Wait for server to be initialized
     awaitInitialization();
@@ -41,10 +41,6 @@ public class Application {
     // Running
     final String VERSION = Props.getInstance().getProperty("application.version");
     logger.info("Excel Microservice version " + VERSION  + " running on port " + PORT);
-  }
-  
-  public void stop() {
-    stop();
   }
 
   public static void main(String[] args) throws IOException {
