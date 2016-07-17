@@ -32,12 +32,13 @@ public class Application {
     get("/application/version",   ApplicationController.version);
     post("/template/add",         TemplateController.add);
     get("/template/get",          TemplateController.get);
+    post("/excel/create",         ExcelController.create);
     post("/excel/inject",         ExcelController.inject);
     get("*",                      ApplicationController.notfound);
 
     // Wait for server to be initialized
     awaitInitialization();
-
+    
     // Running
     final String VERSION = Props.getInstance().getProperty("application.version");
     logger.info("Excel Microservice version " + VERSION  + " running on port " + PORT);
