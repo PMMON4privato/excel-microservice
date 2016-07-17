@@ -11,7 +11,7 @@ import spark.Route;
 public class ApplicationController {
   
   public static Route index = (Request req, Response res) -> 
-    "Excel Writer v" + Props.getInstance().getProperty("application.version");  
+    "Excel Microservice v" + Props.getInstance().getProperty("application.version");  
     
   public static Route version = (Request req, Response res) -> 
     Props.getInstance().getProperty("application.version");
