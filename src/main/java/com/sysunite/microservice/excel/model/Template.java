@@ -1,4 +1,4 @@
-package com.sysunite.services.excelwriter.model;
+package com.sysunite.microservice.excel.model;
 
 /**
  * @author Mohamad Alamili

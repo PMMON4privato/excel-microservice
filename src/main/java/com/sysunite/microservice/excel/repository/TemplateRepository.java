@@ -1,4 +1,4 @@
-package com.sysunite.services.excelwriter.repository;
+package com.sysunite.microservice.excel.repository;
 
 /**
  * @author Mohamad Alamili

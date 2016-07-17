@@ -1,4 +1,4 @@
-package com.sysunite.services.excelwriter.util;
+package com.sysunite.microservice.excel.util;
 
 import com.google.common.io.Resources;
 import org.slf4j.Logger;
