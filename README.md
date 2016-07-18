@@ -1,7 +1,8 @@
 # Excel Microservice
 Microservice for Excel file manipulations using Apache POI and running on Spark Framework
 Below is summary of all possible API calls.
-
+ 
+<br/>
 **1. Add Template**
 ----
   Upload a XLSX template and get the template ID to use for future calls.
@@ -25,7 +26,7 @@ Below is summary of all possible API calls.
   * **Code:** 200 <br />
     **Content:** `077f6afb-50b4-486f-9a6d-1deae276b629`
 
-
+<br/>
 **2. Get Template**
 ----
   Download a template based on template ID
@@ -52,7 +53,7 @@ Below is summary of all possible API calls.
   * **Code:** 200 <br />
     **Content:** `file`
 
-
+<br/>
 **3. Excel Create**
 ----
   Create an Excel file using no template.
@@ -97,7 +98,7 @@ Below is summary of all possible API calls.
   * **Code:** 200 <br />
     **Content:** `file`
  
-
+<br/>
 **4. Excel Inject**
 ----
   Inject data into an Excel file using a pre-added template.
