@@ -10,7 +10,7 @@ Below is the description of all possible API calls.
 <br/>
 **1. Add Template**
 ----
-  Upload a XLSX template and get the template ID to use for future calls.
+  Upload an XLSX template and get the template ID for use in future calls.
 
 * **URL**
 
@@ -34,7 +34,7 @@ Below is the description of all possible API calls.
 <br/>
 **2. Get Template**
 ----
-  Download a template based on template ID
+  Download a previously uploaded template based on a template ID.
 
 * **URL**
 
@@ -61,9 +61,9 @@ Below is the description of all possible API calls.
 <br/>
 **3. Excel Create**
 ----
-  Create an Excel file using no template.
-  The data parameter is a JSON describing which cells should be wich value.
-  The structure is as such:
+  Create an Excel file without using a template.
+  The data parameter is a JSON describing what value should be set in which cells.
+  The structure is as follows:
   ```
   {sheetIndex: {rowIndex: {cellIndex: {'value':'some value', 'type':'string'}}}}
   ```
@@ -79,7 +79,7 @@ Below is the description of all possible API calls.
   {0: {1: {3: {'value':'Hello', 'type':'string'}, 4: {'value':'World'}}}}
   ```
   
-  This will inject in the first sheet the strings 'Hello'in cell D2 and 'World' in E2. 
+  This will in the first sheet inject the strings 'Hello' in cell D2 and 'World' in E2. 
 
 * **URL**
 
@@ -106,8 +106,8 @@ Below is the description of all possible API calls.
 <br/>
 **4. Excel Inject**
 ----
-  Inject data into an Excel file using a pre-added template.
-  The data parameter is the same for Excel Create.
+  Inject data into an Excel file according to a previously added template.
+  The data parameter uses the same format as that of the Excel Create call.
 
 * **URL**
 
