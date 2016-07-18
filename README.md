@@ -56,7 +56,7 @@ Below is summary of all possible API calls.
 **3. Excel Create**
 ----
   Create an Excel file using no template.
-  The data parameter is a JSON describing wich cells should be wich value.
+  The data parameter is a JSON describing which cells should be wich value.
   The structure is as such:
   ```
   {sheetIndex: {rowIndex: {cellIndex: {'value':'some value', 'type':'string'}}}}
