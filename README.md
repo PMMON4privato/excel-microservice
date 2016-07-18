@@ -1,6 +1,11 @@
 # Excel Microservice
-Microservice for Excel file manipulations using Apache POI and running on Spark Framework
-Below is summary of all possible API calls.
+Microservice for Excel file manipulations using Apache POI.
+
+### Features
+- Use a JSON notation to inject string and number values into specific Excel cells and download the Excel file
+- Upload and use Excel templates during injection
+
+Below is the description of all possible API calls.
  
 <br/>
 **1. Add Template**
