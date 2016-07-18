@@ -1,11 +1,11 @@
 # Excel Microservice
-Microservice for Excel file manipulations using Apache POI.
+Microservice for Excel file manipulations using [Apache POI](https://poi.apache.org/).
 
 ### Features
-- Use a JSON notation to inject string and number values into specific Excel cells and download the Excel file
-- Upload and use Excel templates during injection
+- Use a JSON notation to inject string and numeric values into specified Excel cells and download the Excel file
+- Upload Excel templates based upon which values can be injected
 
-Below is the description of all possible API calls.
+Below is the description of the API calls.
  
 <br/>
 **1. Add Template**
