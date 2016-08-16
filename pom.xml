@@ -6,7 +6,7 @@
 
     <groupId>com.sysunite.microservice</groupId>
     <artifactId>excel</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     
     <dependencies>
         <!-- Excel manipulation -->
@@ -120,6 +120,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
+                    <!-- Filename without -jar-with-dependencies -->
+                    <finalName>excel-microservice</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>

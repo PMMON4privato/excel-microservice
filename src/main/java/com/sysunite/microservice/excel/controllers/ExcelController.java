@@ -42,7 +42,7 @@ public class ExcelController {
     // Get params
     req.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/tmp"));
 
-    String data       = req.queryParams("data");
+    String data       = req.body();
     String fileName   = req.queryParams("fileName");
     String templateId = req.queryParams("templateId");
     
