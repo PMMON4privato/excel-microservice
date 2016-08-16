@@ -89,6 +89,10 @@ Below is the description of the API calls.
 
   `POST`
   
+* **Body**
+
+  [string]
+  
 *  **Data Params**
 
    **Required:**
@@ -117,15 +121,17 @@ Below is the description of the API calls.
 
   `POST`
   
+* **Body**
+
+  [string]
+  
 *  **Data Params**
 
    **Required:**
 
-   `data=[string]`
- 
    `fileName=[string]`
-  
-    `templateId=[string]`
+ 
+   `templateId=[string]`
 
 
 * **Success Response:**
