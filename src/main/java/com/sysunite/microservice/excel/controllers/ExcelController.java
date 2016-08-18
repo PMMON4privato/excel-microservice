@@ -58,6 +58,7 @@ public class ExcelController {
     FileInputStream templateFileStream = new FileInputStream(templateFile);
 
     Workbook workbook = new XSSFWorkbook(templateFileStream);
+    workbook.setForceFormulaRecalculation(true);
 
     // Parse values
     for(Integer sheetIndex : excelContent.keySet()){
@@ -83,7 +84,11 @@ public class ExcelController {
 
           // Set value
           Cell cell = row.getCell(cellIndex);
-          cell.setCellValue(excelCell.getValue());
+          
+          if (excelCell.getType().equals("string"))
+            cell.setCellValue(excelCell.getValue());
+          else if(excelCell.getType().equals("number"))
+            cell.setCellValue(Double.valueOf(excelCell.getValue()));
         }
       }
     }
