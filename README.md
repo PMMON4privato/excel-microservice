@@ -7,7 +7,7 @@ Microservice for Excel file manipulations using [Apache POI](https://poi.apache.
 
 Below is the description of the API calls.
  
-<br/>
+
 **1. Add Template**
 ----
   Upload an XLSX template and get the template ID for use in future calls.
@@ -28,10 +28,10 @@ Below is the description of the API calls.
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
+  * **Code:** 200 
     **Content:** `077f6afb-50b4-486f-9a6d-1deae276b629`
 
-<br/>
+
 **2. Get Template**
 ----
   Download a previously uploaded template based on a template ID.
@@ -58,7 +58,7 @@ Below is the description of the API calls.
   * **Code:** 200 <br />
     **Content:** `file`
 
-<br/>
+
 **3. Excel Create**
 ----
   Create an Excel file without using a template.
@@ -91,23 +91,21 @@ Below is the description of the API calls.
   
 * **Body**
 
-  [string]
+  data [string]
   
 *  **Data Params**
 
    **Required:**
 
-   `data=[string]`
- 
    `fileName=[string]`
 
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
+  * **Code:** 200 
     **Content:** `file`
  
-<br/>
+
 **4. Excel Inject**
 ----
   Inject data into an Excel file according to a previously added template.
@@ -136,6 +134,6 @@ Below is the description of the API calls.
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
+  * **Code:** 200
     **Content:** `file`
  
