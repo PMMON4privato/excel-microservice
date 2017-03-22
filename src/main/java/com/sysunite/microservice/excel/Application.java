@@ -36,6 +36,15 @@ public class Application {
     post("/excel/inject",         ExcelController.inject);
     get("*",                      ApplicationController.notfound);
 
+
+    // Catch exceptions
+    exception(Exception.class, (e, request, response) -> {
+      logger.error(e.getLocalizedMessage());
+      response.status(503);
+      response.body("Server Error");
+    });
+
+
     // Wait for server to be initialized
     awaitInitialization();
     

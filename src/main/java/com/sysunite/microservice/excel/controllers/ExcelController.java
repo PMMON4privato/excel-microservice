@@ -10,6 +10,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -19,24 +21,27 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * @author Mohamad Alamili
  */
 public class ExcelController {
+
+  static Logger logger = LoggerFactory.getLogger(ExcelController.class);
   
   public static Route create = (Request req, Response res) -> {
     // Get params
     req.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/tmp"));
 
-    String data = req.queryParams("data");
+    String data = req.body();
     String fileName = req.queryParams("fileName");
-    
-    File baseFile = new File(Resources.getResource("base.xlsx").getPath());
+
+    File baseFile = new File("base.xlsx");
 
     return process(res, data, fileName, baseFile);
   };
-  
+
   
   public static Route inject = (Request req, Response res) -> {
     // Get params
@@ -85,9 +90,9 @@ public class ExcelController {
           // Set value
           Cell cell = row.getCell(cellIndex);
           
-          if (excelCell.getType().equals("string"))
+          if (excelCell.getType().equalsIgnoreCase("string"))
             cell.setCellValue(excelCell.getValue());
-          else if(excelCell.getType().equals("number"))
+          else if(excelCell.getType().equalsIgnoreCase("number"))
             cell.setCellValue(Double.valueOf(excelCell.getValue()));
         }
       }
