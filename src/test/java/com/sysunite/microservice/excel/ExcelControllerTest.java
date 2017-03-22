@@ -42,7 +42,7 @@ public class ExcelControllerTest extends BaseTest {
     InputStream excelContent = 
     given().
       contentType(ContentType.JSON).
-      queryParam("data", data.toJson()).
+      body(data.toJson()).
       queryParam("fileName", fileName).
     when().
       post("/excel/create").
