@@ -90,15 +90,15 @@ Below is the description of the API calls.
   `POST`
   
 * **Body**
-
-  data [string]
+  data[string]
   
 *  **Data Params**
 
    **Required:**
-
    `fileName=[string]`
-
+   
+ * **Header**
+   Content-Type: application/json
 
 * **Success Response:**
 
