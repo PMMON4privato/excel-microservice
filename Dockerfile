@@ -3,4 +3,4 @@ COPY ./target/excel-microservice.jar /usr/src/app/
 COPY ./base.xlsx /usr/src/app
 WORKDIR /usr/src/app
 EXPOSE 9267
-CMD java -jar excel-microservice.jar
+CMD java -Xmx4g -jar excel-microservice.jar
