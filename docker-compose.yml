@@ -1,7 +1,7 @@
 version: '2'
 services:
   excel-microservice:
-    image: sysunite/excel-microservice:0.0.6
+    image: sysunite/excel-microservice:0.0.7
     expose:
       - "9267"
     ports:
