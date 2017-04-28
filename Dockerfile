@@ -1,4 +1,6 @@
 FROM java:8
 COPY ./target/excel-microservice.jar /usr/src/app/
+COPY ./base.xlsx /usr/src/app
 WORKDIR /usr/src/app
-CMD java -Xmx2048m -jar excel-microservice.jar
+EXPOSE 9267
+CMD java -Xmx6g -jar excel-microservice.jar

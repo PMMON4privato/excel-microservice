@@ -1,5 +1,7 @@
 package com.sysunite.microservice.excel.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -17,6 +19,8 @@ import java.util.UUID;
  * @author Mohamad Alamili
  */
 public class TemplateController {
+
+  static Logger logger = LoggerFactory.getLogger(TemplateController.class);
   
   public static Route add = (Request req, Response res) -> {
 
@@ -35,6 +39,8 @@ public class TemplateController {
     // getPart needs to use same "name" as input field in form
     try (InputStream input = req.raw().getPart("uploaded_file").getInputStream()) {
       Files.copy(input, newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+    } catch (Exception e) {
+      logger.error(e.getLocalizedMessage());
     }
 
     return templateId;
