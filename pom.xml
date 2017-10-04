@@ -6,8 +6,8 @@
 
     <groupId>com.sysunite.microservice</groupId>
     <artifactId>excel</artifactId>
-    <version>0.0.5</version>
-    
+    <version>0.0.8</version>
+
     <dependencies>
         <!-- Excel manipulation -->
         <dependency>
