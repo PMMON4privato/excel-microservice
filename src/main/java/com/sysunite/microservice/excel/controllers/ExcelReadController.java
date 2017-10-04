@@ -75,7 +75,7 @@ public class ExcelReadController {
       case _NONE:
         return null;
       case NUMERIC:
-        return new ExcelCell(cell.getNumericCellValue(), "numeric");
+        return new ExcelCell(cell.getNumericCellValue(), "number");
       case STRING:
         return new ExcelCell(cell.getStringCellValue(), "string");
       case FORMULA:
