@@ -47,14 +47,14 @@ public class Application {
 
     // Wait for server to be initialized
     awaitInitialization();
-    
+
     // Catch exceptions
     exception(Exception.class, (e, request, response) -> {
       e.printStackTrace();
       response.status(503);
       response.body("Server Error");
     });
-    
+
     // Running
     final String VERSION = Props.getInstance().getProperty("application.version");
     logger.info("Excel Microservice version " + VERSION  + " running on port " + PORT);

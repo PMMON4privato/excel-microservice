@@ -22,7 +22,7 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.16</version>
         </dependency>
-        
+
         <!-- Spark as Lightweight webserver -->
         <dependency>
             <groupId>com.sparkjava</groupId>
@@ -43,7 +43,7 @@
             <artifactId>guava</artifactId>
             <version>19.0</version>
         </dependency>
-        
+
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -58,7 +58,7 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- REST testing -->
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -66,7 +66,7 @@
             <version>3.0.0</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- ZipArchive for testing -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -92,7 +92,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        
+
         <!-- Needed so that main resources are also included in tests -->
         <testResources>
             <testResource>
@@ -104,7 +104,7 @@
         </testResources>
 
         <plugins>
-            
+
             <!-- Set build and source target to 1.8 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
