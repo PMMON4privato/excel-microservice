@@ -4,21 +4,22 @@ package com.sysunite.microservice.excel.model;
  * @author Mohamad Alamili
  */
 public class ExcelCell {
-  private String value, type;
+  private Object value;
+  private String type;
 
   public ExcelCell() {
   }
-  
-  public ExcelCell(String value, String type) {
+
+  public ExcelCell(Object value, String type) {
     this.value = value;
     this.type = type;
   }
 
-  public String getValue() {
+  public Object getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(Object value) {
     this.value = value;
   }
 

@@ -1,6 +1,7 @@
-package com.sysunite.microservice.excel; 
+package com.sysunite.microservice.excel;
 
 import com.sysunite.microservice.excel.controllers.ApplicationController;
+import com.sysunite.microservice.excel.controllers.ExcelReadController;
 import com.sysunite.microservice.excel.controllers.ExcelWriteController;
 import com.sysunite.microservice.excel.controllers.TemplateController;
 import com.sysunite.microservice.excel.util.CORS;
@@ -34,6 +35,7 @@ public class Application {
     get("/template/get",          TemplateController.get);
     post("/excel/create",         ExcelWriteController.create);
     post("/excel/inject",         ExcelWriteController.inject);
+    post("/excel/read",           ExcelReadController.read);
     get("*",                      ApplicationController.notfound);
 
 
