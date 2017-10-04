@@ -28,7 +28,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * @author Mohamad Alamili
  */
-public class ExcelControllerTest extends BaseTest {
+public class ExcelWriteControllerTest extends BaseTest {
   
   @Test
   public void create() throws IOException, NoSuchAlgorithmException {

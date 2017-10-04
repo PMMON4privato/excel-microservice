@@ -1,6 +1,5 @@
 package com.sysunite.microservice.excel.controllers;
 
-import com.google.common.io.Resources;
 import com.sysunite.microservice.excel.model.ExcelCell;
 import com.sysunite.microservice.excel.model.ExcelContent;
 import com.sysunite.microservice.excel.model.ExcelRow;
@@ -21,15 +20,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * @author Mohamad Alamili
  */
-public class ExcelController {
+public class ExcelWriteController {
 
-  static Logger logger = LoggerFactory.getLogger(ExcelController.class);
-  
+  static Logger logger = LoggerFactory.getLogger(ExcelWriteController.class);
+
   public static Route create = (Request req, Response res) -> {
     // Get params
     req.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/tmp"));
@@ -42,7 +40,7 @@ public class ExcelController {
     return process(res, data, fileName, baseFile);
   };
 
-  
+
   public static Route inject = (Request req, Response res) -> {
     // Get params
     req.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/tmp"));
@@ -50,13 +48,13 @@ public class ExcelController {
     String data       = req.body();
     String fileName   = req.queryParams("fileName");
     String templateId = req.queryParams("templateId");
-    
+
     File templateFile = new File("templates", templateId);
-    
+
     return process(res, data, fileName, templateFile);
   };
-  
-  
+
+
   private static HttpServletResponse process(Response res, String data, String fileName, File templateFile) throws IOException {
     ExcelContent excelContent = ExcelContent.fromJson(data);
 
@@ -89,11 +87,11 @@ public class ExcelController {
 
           // Set value
           Cell cell = row.getCell(cellIndex);
-          
+
           if (excelCell.getType().equalsIgnoreCase("string"))
-            cell.setCellValue(excelCell.getValue());
+            cell.setCellValue(excelCell.getValue().toString());
           else if(excelCell.getType().equalsIgnoreCase("number"))
-            cell.setCellValue(Double.valueOf(excelCell.getValue()));
+            cell.setCellValue(Double.valueOf(excelCell.getValue().toString()));
         }
       }
     }
