@@ -13,7 +13,7 @@ public class ApplicationControllerTest extends BaseTest {
 
   @Test
   public void get_version() {
-    final String VERSION = Props.getInstance().getProperty("application.version");
+    final String VERSION = Props.get("application.version");
     get("/application/version").then().body(is(VERSION));
   }
 }

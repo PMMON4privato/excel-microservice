@@ -56,7 +56,7 @@ public class Application {
     });
 
     // Running
-    final String VERSION = Props.getInstance().getProperty("application.version");
+    final String VERSION = Props.get("application.version");
     logger.info("Excel Microservice version " + VERSION  + " running on port " + PORT);
   }
 

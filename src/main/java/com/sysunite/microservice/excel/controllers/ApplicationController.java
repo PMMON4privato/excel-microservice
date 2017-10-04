@@ -9,12 +9,12 @@ import spark.Route;
  * @author Mohamad Alamili
  */
 public class ApplicationController {
-  
-  public static Route index = (Request req, Response res) -> 
-    "Excel Microservice v" + Props.getInstance().getProperty("application.version");  
-    
-  public static Route version = (Request req, Response res) -> 
-    Props.getInstance().getProperty("application.version");
+
+  public static Route index = (Request req, Response res) ->
+    "Excel Microservice v" + Props.get("application.version");
+
+  public static Route version = (Request req, Response res) ->
+    Props.get("application.version");
 
   public static Route notfound = (Request req, Response res) ->
     "not found";
