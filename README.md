@@ -76,7 +76,7 @@ Below is the description of the API calls.
   
   Example:
   ```
-  {0: {1: {3: {'value':'Hello', 'type':'string'}, 4: {'value':'World'}}}}
+  {0: {1: {3: {'value':'Hello', 'type':'string'}, 4: {'value':'World', 'type':'string'}}}}
   ```
   
   This will in the first sheet inject the strings 'Hello' in cell D2 and 'World' in E2. 
