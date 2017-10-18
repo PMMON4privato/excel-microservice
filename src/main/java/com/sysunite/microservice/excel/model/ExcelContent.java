@@ -7,7 +7,22 @@ import java.util.LinkedHashMap;
 /**
  * @author Mohamad Alamili
  */
-public class ExcelContent extends LinkedHashMap<Integer, ExcelSheet> {
+public class ExcelContent extends LinkedHashMap<String, ExcelSheet> {
+
+  public void cleanNullCells(){
+    for(String sheet: keySet()){
+      for(Integer rowIndex: get(sheet).keySet()){
+        Object[] cells = get(sheet).get(rowIndex).keySet().toArray();
+
+        for (int i=0; i < cells.length; i++) {
+          ExcelCell cell = get(sheet).get(rowIndex).get(cells[i]);
+          if (cell.getValue() == null){
+            get(sheet).get(rowIndex).remove(cells[i]);
+          }
+        }
+      }
+    }
+  }
 
   public void cleanEmpty(){
     Object[] sheets = keySet().toArray();
@@ -26,12 +41,12 @@ public class ExcelContent extends LinkedHashMap<Integer, ExcelSheet> {
     return new Gson().toJson(this);
   }
 
-  public ExcelSheet getOrInit(int key){
-    if (!containsKey(key)){
-      put(key, new ExcelSheet());
+  public ExcelSheet getOrInit(String name){
+    if (!containsKey(name)){
+      put(name, new ExcelSheet());
     }
 
-    return get(key);
+    return get(name);
   }
 
   public static ExcelContent fromJson(String data) {
