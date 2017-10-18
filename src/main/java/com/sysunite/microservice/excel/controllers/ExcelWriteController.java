@@ -37,7 +37,7 @@ public class ExcelWriteController {
 
     File baseFile = new File("base.xlsx");
 
-    return process(res, data, fileName, baseFile);
+    return process(res, data, fileName, baseFile, true);
   };
 
 
@@ -51,22 +51,34 @@ public class ExcelWriteController {
 
     File templateFile = new File("templates", templateId);
 
-    return process(res, data, fileName, templateFile);
+    return process(res, data, fileName, templateFile, false);
   };
 
 
-  private static HttpServletResponse process(Response res, String data, String fileName, File templateFile) throws IOException {
+  private static HttpServletResponse process(Response res, String data, String fileName, File templateFile, boolean isBaseFile) throws IOException {
     ExcelContent excelContent = ExcelContent.fromJson(data);
+    excelContent.cleanNullCells();
+    excelContent.cleanEmpty();
 
     FileInputStream templateFileStream = new FileInputStream(templateFile);
 
     Workbook workbook = new XSSFWorkbook(templateFileStream);
+    if (isBaseFile) {
+      workbook.removeSheetAt(0); // Remove default sheet
+    }
+
     workbook.setForceFormulaRecalculation(true);
 
-    // Parse values
-    for(Integer sheetIndex : excelContent.keySet()){
-      ExcelSheet excelSheet = excelContent.get(sheetIndex);
 
+    // Parse values
+    for(String sheetName: excelContent.keySet()){
+      ExcelSheet excelSheet = excelContent.get(sheetName);
+
+      // Create sheets
+      if (isBaseFile) {
+        workbook.createSheet(sheetName);
+      }
+      
       for(Integer rowIndex : excelSheet.keySet()){
         ExcelRow excelRow = excelSheet.get(rowIndex);
 
@@ -74,7 +86,7 @@ public class ExcelWriteController {
           ExcelCell excelCell = excelRow.get(cellIndex);
 
           // Create row
-          Sheet sheet = workbook.getSheetAt(sheetIndex);
+          Sheet sheet = workbook.getSheet(sheetName);
           if(sheet.getRow(rowIndex) == null){
             sheet.createRow(rowIndex);
           }

@@ -29,7 +29,7 @@ import static org.junit.Assert.assertEquals;
  * @author Mohamad Alamili
  */
 public class FormulaCalculationTest extends BaseTest {
- 
+
   @Test
   public void inject() throws IOException, NoSuchAlgorithmException {
     // First upload template
@@ -46,12 +46,12 @@ public class FormulaCalculationTest extends BaseTest {
         extract().
         response().
         asString();
-    
+
     ExcelContent data = new ExcelContent();
-    data.put(0, new ExcelSheet());
-    data.get(0).put(1, new ExcelRow());
-    data.get(0).get(1).put(0, new ExcelCell("1", "number"));
-    data.get(0).get(1).put(2, new ExcelCell("2", "number"));
+    data.put("Sheet 1", new ExcelSheet());
+    data.get("Sheet 1").put(1, new ExcelRow());
+    data.get("Sheet 1").get(1).put(0, new ExcelCell("1", "number"));
+    data.get("Sheet 1").get(1).put(2, new ExcelCell("2", "number"));
 
     String fileName = "formula.xlsx";
 
@@ -77,14 +77,14 @@ public class FormulaCalculationTest extends BaseTest {
 
     assertEquals(shouldBeContent, receivedContent);
   }
-  
-  
+
+
   public File writeTempFile(InputStream stream) throws IOException {
     File tempFile = File.createTempFile("test_temp_","");
     FileUtils.writeByteArrayToFile(tempFile, IOUtils.toByteArray(stream));
     return tempFile;
   }
-  
+
   public List<String> getHashesFromZipFile(File file) throws IOException {
     List<String> hashes = new ArrayList<>();
     ZipFile zipFile = new ZipFile(file);
@@ -106,7 +106,7 @@ public class FormulaCalculationTest extends BaseTest {
       }
       zis.close();
     }
-    
+
     return hashes;
   }
 }

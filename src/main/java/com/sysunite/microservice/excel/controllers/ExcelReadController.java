@@ -57,7 +57,7 @@ public class ExcelReadController {
           // Save cell to content
 
           content
-            .getOrInit(i)
+            .getOrInit(sheet.getSheetName())
             .getOrInit(row.getRowNum())
             .putIfDefined(cell.getAddress().getColumn(), getCell(cell, cell.getCellTypeEnum()));
         }

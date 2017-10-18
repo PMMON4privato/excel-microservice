@@ -29,17 +29,17 @@ import static org.junit.Assert.assertEquals;
  * @author Mohamad Alamili
  */
 public class ExcelWriteControllerTest extends BaseTest {
-  
+
   @Test
   public void create() throws IOException, NoSuchAlgorithmException {
     ExcelContent data = new ExcelContent();
-    data.put(0, new ExcelSheet());
-    data.get(0).put(1, new ExcelRow());
-    data.get(0).get(1).put(2, new ExcelCell("Hello World", "string"));
-    
+    data.put("Sheet 1", new ExcelSheet());
+    data.get("Sheet 1").put(1, new ExcelRow());
+    data.get("Sheet 1").get(1).put(2, new ExcelCell("Hello World", "string"));
+
     String fileName = "hello.xlsx";
-    
-    InputStream excelContent = 
+
+    InputStream excelContent =
     given().
       contentType(ContentType.JSON).
       body(data.toJson()).
@@ -53,11 +53,11 @@ public class ExcelWriteControllerTest extends BaseTest {
       statusCode(200).
     extract().
       response().asInputStream();
-    
+
     // Check content
     List<String> receivedContent = getHashesFromZipFile(writeTempFile(excelContent));
     List<String> shouldBeContent = getHashesFromZipFile(new File(Resources.getResource("test-create-1.xlsx").getPath()));
-    
+
     assertEquals(shouldBeContent, receivedContent);
   }
 
@@ -78,11 +78,11 @@ public class ExcelWriteControllerTest extends BaseTest {
         extract().
         response().
         asString();
-    
+
     ExcelContent data = new ExcelContent();
-    data.put(0, new ExcelSheet());
-    data.get(0).put(1, new ExcelRow());
-    data.get(0).get(1).put(2, new ExcelCell("Hello World", "string"));
+    data.put("Sheet 1", new ExcelSheet());
+    data.get("Sheet 1").put(1, new ExcelRow());
+    data.get("Sheet 1").get(1).put(2, new ExcelCell("Hello World", "string"));
 
     String fileName = "hello.xlsx";
 
@@ -108,14 +108,14 @@ public class ExcelWriteControllerTest extends BaseTest {
 
     assertEquals(shouldBeContent, receivedContent);
   }
-  
-  
+
+
   public File writeTempFile(InputStream stream) throws IOException {
     File tempFile = File.createTempFile("test_temp_","");
     FileUtils.writeByteArrayToFile(tempFile, IOUtils.toByteArray(stream));
     return tempFile;
   }
-  
+
   public List<String> getHashesFromZipFile(File file) throws IOException {
     List<String> hashes = new ArrayList<>();
     ZipFile zipFile = new ZipFile(file);
@@ -137,7 +137,7 @@ public class ExcelWriteControllerTest extends BaseTest {
       }
       zis.close();
     }
-    
+
     return hashes;
   }
 }
