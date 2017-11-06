@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-docker build -t sysunite/excel-microservice:0.1.1 .
+name=$(grep artifactId pom.xml | sed -e s'/.*>\([^<]*\)<.*/\1/' | head -n 1)
+version=$(grep '<version' pom.xml | sed -e s'/.*>\([^<]*\)<.*/\1/' | head -n 1)
+docker build -t sysunite/${name}:${version} .
