@@ -1,5 +1,6 @@
 package com.sysunite.microservice.excel.controllers;
 
+import com.sysunite.microservice.excel.enum_type.CellDataTypeEnum;
 import com.sysunite.microservice.excel.model.ExcelCell;
 import com.sysunite.microservice.excel.model.ExcelContent;
 import com.sysunite.microservice.excel.model.ExcelRow;
@@ -100,10 +101,13 @@ public class ExcelWriteController {
           // Set value
           Cell cell = row.getCell(cellIndex);
 
-          if (excelCell.getType().equalsIgnoreCase("string"))
+          if (excelCell.getType().equalsIgnoreCase(CellDataTypeEnum.STRING.dataType()))
             cell.setCellValue(excelCell.getValue().toString());
-          else if(excelCell.getType().equalsIgnoreCase("number"))
+          else if(excelCell.getType().equalsIgnoreCase(CellDataTypeEnum.NUMBER.dataType()))
             cell.setCellValue(Double.valueOf(excelCell.getValue().toString()));
+          else if(excelCell.getType().equalsIgnoreCase(CellDataTypeEnum.BOOLEAN.dataType())) {
+            cell.setCellValue(Boolean.valueOf(excelCell.getValue().toString()));
+          }
         }
       }
     }

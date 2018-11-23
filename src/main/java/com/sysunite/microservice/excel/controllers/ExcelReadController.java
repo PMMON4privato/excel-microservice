@@ -1,23 +1,15 @@
 package com.sysunite.microservice.excel.controllers;
 
+import com.sysunite.microservice.excel.enum_type.CellDataTypeEnum;
 import com.sysunite.microservice.excel.model.ExcelCell;
 import com.sysunite.microservice.excel.model.ExcelContent;
-import com.sysunite.microservice.excel.model.ExcelRow;
-import com.sysunite.microservice.excel.model.ExcelSheet;
 import com.sysunite.microservice.excel.util.UploadedFile;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 
@@ -75,17 +67,17 @@ public class ExcelReadController {
       case _NONE:
         return null;
       case NUMERIC:
-        return new ExcelCell(cell.getNumericCellValue(), "number");
+        return new ExcelCell(cell.getNumericCellValue(), CellDataTypeEnum.NUMBER.dataType());
       case STRING:
-        return new ExcelCell(cell.getStringCellValue(), "string");
+        return new ExcelCell(cell.getStringCellValue(), CellDataTypeEnum.STRING.dataType());
       case FORMULA:
         return getCell(cell, cell.getCachedFormulaResultTypeEnum());
       case BLANK:
         return null;
       case BOOLEAN:
-        return new ExcelCell(cell.getBooleanCellValue(), "boolean");
+        return new ExcelCell(cell.getBooleanCellValue(), CellDataTypeEnum.BOOLEAN.dataType());
       case ERROR:
-        return new ExcelCell(cell.getErrorCellValue(), "error");
+        return new ExcelCell(cell.getErrorCellValue(), CellDataTypeEnum.ERROR.dataType());
       default:
         return null;
     }
