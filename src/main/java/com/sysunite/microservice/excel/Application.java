@@ -31,6 +31,7 @@ public class Application {
     // Wire routes
     get("/",                      ApplicationController.index);
     get("/application/version",   ApplicationController.version);
+    get("/swagger",               ApplicationController.swagger);
     post("/template/add",         TemplateController.add);
     get("/template/get",          TemplateController.get);
     post("/excel/create",         ExcelWriteController.create);
