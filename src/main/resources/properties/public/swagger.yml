@@ -1,0 +1,67 @@
+swagger: '2.0'
+info:
+  title: excel-microservice
+  description: >-
+    Microservice to transform json to excel sheets.
+  version: 0.1.2
+  contact:
+    email: mail@sysunite.com
+basePath: /
+schemes:
+  - http
+
+paths:
+  /:
+    get:
+      tags:
+        - System
+      summary: Index page
+      produces:
+        - text/html
+      responses:
+        200:
+          description: success
+
+  /swagger:
+    get:
+      tags:
+        - System
+      summary: Swagger definition file
+      produces:
+        - text/html
+      responses:
+        200:
+          description: success
+
+  /application/version:
+    get:
+      tags:
+        - System
+      summary: Get service version
+      produces:
+        - application/json
+      responses:
+        200:
+          description: success
+
+  /excel/create:
+    post:
+      tags:
+        - Excel
+      operationId: createExcel
+      summary: Create excel sheet from json
+      parameters:
+        - in: query
+          name: fileName
+          type: string
+          required: true
+          description: The name of the generated file
+        - in: body
+          name: json
+          schema:
+            type: object
+      produces:
+        - application/json
+      responses:
+        200:
+          description: success
