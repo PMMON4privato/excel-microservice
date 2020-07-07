@@ -67,7 +67,11 @@ public class ExcelReadController {
       case _NONE:
         return null;
       case NUMERIC:
-        return new ExcelCell(cell.getNumericCellValue(), CellDataTypeEnum.NUMBER.dataType());
+        if(DateUtil.isCellDateFormatted(cell)) {
+          return new ExcelCell(cell.getDateCellValue().toInstant().toString(), CellDataTypeEnum.DATETIME.dataType());
+        } else {
+          return new ExcelCell(cell.getNumericCellValue(), CellDataTypeEnum.NUMBER.dataType());
+        }
       case STRING:
         return new ExcelCell(cell.getStringCellValue(), CellDataTypeEnum.STRING.dataType());
       case FORMULA:
