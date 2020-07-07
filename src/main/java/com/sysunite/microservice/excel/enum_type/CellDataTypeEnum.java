@@ -5,6 +5,7 @@ public enum CellDataTypeEnum {
   NUMBER("number"),
   STRING("string"),
   BOOLEAN("boolean"),
+  DATETIME("datetime"),
   ERROR("error");
 
   private String dataType;
