@@ -1,4 +1,4 @@
-# Excel Microservice
+### Excel Microservice
 Microservice for Excel file manipulations using [Apache POI](https://poi.apache.org/).
 
 ### Features
